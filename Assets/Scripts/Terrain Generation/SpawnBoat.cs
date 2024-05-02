@@ -83,7 +83,6 @@ public class SpawnBoat : MonoBehaviour
                     {
                         gtm.unWalkableTilemap.SetTile(cellPos, null);
                         gtm.walkableTilemap.SetTile(cellPos, tile);
-                        Debug.Log(cellPos);
                     }
                 }
             }
