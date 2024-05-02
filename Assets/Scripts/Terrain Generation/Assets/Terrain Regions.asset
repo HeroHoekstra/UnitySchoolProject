@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 161c96e7515183645be2a586d5d318ba, type: 3}
+  m_Name: Terrain Regions
+  m_EditorClassIdentifier: 
+  terrainRegion:
+  - isWalkable: 0
+    tileBase: {fileID: 11400000, guid: 88cfe4fa9ed607442a94ae2dc792660f, type: 2}
+    startHeight: 0
+    endHeight: 0.333
+  - isWalkable: 1
+    tileBase: {fileID: 11400000, guid: 81b59bd37fb83f74486c67d13a57769e, type: 2}
+    startHeight: 0.333
+    endHeight: 1
