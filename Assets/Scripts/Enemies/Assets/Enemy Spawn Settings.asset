@@ -13,4 +13,11 @@ MonoBehaviour:
   m_Name: Enemy Spawn Settings
   m_EditorClassIdentifier: 
   spawnAmount: 0
-  difficullty: 0
+  difficullty: 10
+  enemyDifficultyMargin: 10
+  useDynamicSpawnAmount: 1
+  dynamicEnemyMulitplier: 1
+  enemyTypes:
+  - enemy: {fileID: 4475311452324477284, guid: 92ab594e9c2725d49910757439a5a3aa, type: 3}
+    difficulty: 1
+    rarity: 1

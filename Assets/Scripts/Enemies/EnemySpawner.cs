@@ -27,7 +27,7 @@ public class SpawnEnemies : MonoBehaviour
             for (int i = 0; i < enemyAmount; i++)
             {
                 // Get random tile position
-                Vector2 randomTilePos = land.GetChild(Random.Range(0, land.childCount)).position;
+                Vector3 randomTilePos = land.GetChild(Random.Range(0, land.childCount)).position + new Vector3(0, 0, -0.3f);
 
                 // Get random enemy
                 List<EnemySpawnSettings.EnemyTypes> eligibleEnemies = new List<EnemySpawnSettings.EnemyTypes>();

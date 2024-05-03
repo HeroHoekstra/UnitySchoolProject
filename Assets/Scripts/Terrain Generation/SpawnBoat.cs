@@ -46,7 +46,7 @@ public class SpawnBoat : MonoBehaviour
 
         boatSpawnPos = getBoatSpawn() + new Vector2(bSettings.xOffset, bSettings.yOffset);
 
-        spawnedBoat = Instantiate(boat, new Vector3(-10, boatSpawnPos.y, 0), Quaternion.identity);
+        spawnedBoat = Instantiate(boat, new Vector3(-10, boatSpawnPos.y, -0.3f), Quaternion.identity);
         previousBoatPos = spawnedBoat.transform.position;
 
         spawnedPlayer = Instantiate(player, boatSpawnPos, Quaternion.identity);
@@ -69,23 +69,6 @@ public class SpawnBoat : MonoBehaviour
         if (holdPlayer && Vector2.Distance(spawnedBoat.transform.position, previousBoatPos) == 0)
         {
             holdPlayer = false;
-
-            // Check for the tiles the boat is on and add them to the walkable tile map
-            RaycastHit2D[] hits = Physics2D.RaycastAll(spawnedBoat.transform.position, Vector2.down);
-            foreach (RaycastHit2D hit in hits)
-            {
-                if (hit.collider.gameObject == gtm.unWalkableTilemap.gameObject)
-                {
-                    Vector3Int cellPos = gtm.unWalkableTilemap.WorldToCell(hit.point);
-                    TileBase tile = gtm.unWalkableTilemap.GetTile(cellPos);
-
-                    if (tile != null)
-                    {
-                        gtm.unWalkableTilemap.SetTile(cellPos, null);
-                        gtm.walkableTilemap.SetTile(cellPos, tile);
-                    }
-                }
-            }
         }
 
         if (holdPlayer)
