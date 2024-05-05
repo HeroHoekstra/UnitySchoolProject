@@ -6,6 +6,7 @@ using UnityEngine.Tilemaps;
 public class SpawnEnemies : MonoBehaviour
 {
     public EnemySpawnSettings ess;
+    public Transform enemyParent;
 
     private Transform land;
 
@@ -59,7 +60,7 @@ public class SpawnEnemies : MonoBehaviour
                     cumulativeRarity += enemy.rarity;
                     if (randValue < cumulativeRarity)
                     {
-                        Instantiate(enemy.enemy, randomTilePos, Quaternion.identity);
+                        Instantiate(enemy.enemy, randomTilePos, Quaternion.identity, enemyParent);
                         break;
                     }
                 }

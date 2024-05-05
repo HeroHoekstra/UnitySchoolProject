@@ -44,7 +44,7 @@ public class SpawnBoat : MonoBehaviour
         height = gtm.noiseMap.GetLength(1);
         visited = new bool[width, height];
 
-        boatSpawnPos = getBoatSpawn() + new Vector2(bSettings.xOffset, bSettings.yOffset);
+        boatSpawnPos = GetBoatSpawn() + new Vector2(bSettings.xOffset, bSettings.yOffset);
 
         spawnedBoat = Instantiate(boat, new Vector3(-10, boatSpawnPos.y, -0.3f), Quaternion.identity);
         previousBoatPos = spawnedBoat.transform.position;
@@ -55,10 +55,10 @@ public class SpawnBoat : MonoBehaviour
 
     private void Update()
     {
-        enterIsland();
+        EnterIsland();
     }
 
-    private void enterIsland()
+    private void EnterIsland()
     {
         // Move the boat and slowly stop
         float distance = Vector2.Distance(spawnedBoat.transform.position, boatSpawnPos);
@@ -73,7 +73,7 @@ public class SpawnBoat : MonoBehaviour
 
         if (holdPlayer)
         {
-            holdPlayerInBoat();
+            HoldPlayerInBoat();
         }
         else if (!spawnedPlayer.GetComponent<Movement>().enabled)
         {
@@ -83,13 +83,13 @@ public class SpawnBoat : MonoBehaviour
         previousBoatPos = spawnedBoat.transform.position;
     }
 
-    private void holdPlayerInBoat()
+    private void HoldPlayerInBoat()
     {
         spawnedPlayer.GetComponent<Movement>().enabled = false;
         spawnedPlayer.transform.position = spawnedBoat.transform.position;
     }
 
-    private Vector2 getBoatSpawn()
+    private Vector2 GetBoatSpawn()
     {
         bool firstXSeen = false;
         int firstY = -1;
@@ -106,7 +106,7 @@ public class SpawnBoat : MonoBehaviour
                     if (!firstXSeen)
                     {
                         // Check if this island is big enough
-                        checkNeighbors(x, y);
+                        CheckNeighbors(x, y);
                         if (currentSize >= minSize)
                         {
                             firstXSeen = true;
@@ -135,7 +135,7 @@ public class SpawnBoat : MonoBehaviour
         return new Vector2(middleX + .5f, firstY - .5f);
     }
 
-    private void checkNeighbors(int x, int y)
+    private void CheckNeighbors(int x, int y)
     {
         // Check if the search is out of bounds
         if (x < 0 || x >= width || y < 0 || y >= height)
@@ -153,9 +153,9 @@ public class SpawnBoat : MonoBehaviour
         currentSize++;
 
         // Check neighbors
-        checkNeighbors(x + 1, y);
-        checkNeighbors(x, y + 1);
-        checkNeighbors(x - 1, y);
-        checkNeighbors(x, y - 1);
+        CheckNeighbors(x + 1, y);
+        CheckNeighbors(x, y + 1);
+        CheckNeighbors(x - 1, y);
+        CheckNeighbors(x, y - 1);
     }
 }

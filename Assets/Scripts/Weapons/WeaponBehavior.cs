@@ -1,0 +1,44 @@
+using UnityEngine;
+
+public class WeaponBehavior : MonoBehaviour
+{
+    public WeaponData weaponData;
+
+    [HideInInspector]
+    public bool reloading;
+    [HideInInspector]
+    public bool shot;
+
+    private int ammo;
+    private float lastShotTime;
+
+    private void Start()
+    {
+        ammo = weaponData.ammo;
+        lastShotTime = Time.time;
+    }
+
+    public void Shoot()
+    {
+        if (
+            (Time.time - lastShotTime >= weaponData.shootSpeed && ammo > 0) ||
+            (Time.time - lastShotTime >= weaponData.reloadTime)
+        ) {
+            reloading = false;
+            shot = true;
+
+            if (ammo <= 0)
+            {
+                ammo = weaponData.ammo;
+                reloading = true;
+            }
+
+            GameObject bullet = Instantiate(weaponData.bullet, transform.position, transform.rotation);
+            Vector3 forwardDirection = transform.right;
+            bullet.GetComponent<Rigidbody2D>().velocity = forwardDirection * weaponData.bulletSpeed;
+
+            ammo--;
+            lastShotTime = Time.time;
+        }
+    }
+}

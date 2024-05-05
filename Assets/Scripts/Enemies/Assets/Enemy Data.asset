@@ -14,8 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   detectionRadius: 10
   maxHealth: 0
+  shootDistance: 10
+  damageMultiplier: 1
+  weapon: {fileID: 2934078796072976637, guid: c9e6c4510749cf349903a9a6d32b5f11, type: 3}
   speed: 3
   keepDistance: 5
-  damageMultiplier: 0
-  weapon: {fileID: 0}
-  behaviors: 0
+  moveRange: 2
+  behaviors: 3
