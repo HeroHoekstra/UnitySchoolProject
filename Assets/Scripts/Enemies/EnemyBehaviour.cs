@@ -85,8 +85,6 @@ public class EnemyBehaviour : MonoBehaviour
                     currentState = EnemyState.Idle;
                 }
             }
-
-            Debug.Log(currentState);
         }
     }
 
@@ -106,7 +104,7 @@ public class EnemyBehaviour : MonoBehaviour
             float angle = Mathf.Atan2(targetDirection.y, targetDirection.x) * Mathf.Rad2Deg;
             weapon.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
 
-            weaponBehavior.Shoot();
+            weaponBehavior.Shoot(enemyData.damageMultiplier);
         }
     }
 

@@ -18,7 +18,7 @@ public class WeaponBehavior : MonoBehaviour
         lastShotTime = Time.time;
     }
 
-    public void Shoot()
+    public void Shoot(float damageMult)
     {
         if (
             (Time.time - lastShotTime >= weaponData.shootSpeed && ammo > 0) ||
@@ -33,7 +33,8 @@ public class WeaponBehavior : MonoBehaviour
                 reloading = true;
             }
 
-            GameObject bullet = Instantiate(weaponData.bullet, transform.position, transform.rotation);
+            GameObject bullet = Instantiate(weaponData.bullet, transform.position, transform.rotation, transform.parent.parent);
+            bullet.GetComponent<DamageEntity>().damage = weaponData.damage * damageMult;
             Vector3 forwardDirection = transform.right;
             bullet.GetComponent<Rigidbody2D>().velocity = forwardDirection * weaponData.bulletSpeed;
 

@@ -8,6 +8,7 @@ public class EnemyData : ScriptableObject
 {
     public float detectionRadius;
     public float maxHealth;
+    public float defense;
 
     [Header("Weapon data")]
     public float shootDistance;
