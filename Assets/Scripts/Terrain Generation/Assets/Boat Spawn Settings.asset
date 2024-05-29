@@ -15,3 +15,4 @@ MonoBehaviour:
   xOffset: 0
   yOffset: -0.3
   speed: 0.1
+  playerDropOffOffset: {x: 0, y: 2}

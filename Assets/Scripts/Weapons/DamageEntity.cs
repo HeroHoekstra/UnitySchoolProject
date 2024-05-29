@@ -6,15 +6,13 @@ public class DamageEntity : MonoBehaviour
 {
     [HideInInspector]
     public float damage;
+    [HideInInspector]
+    public GameObject parent;
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (
-            (other.tag == "Player" || other.tag == "Enemy" || other.tag == "Breakable") &&
-            other.transform.parent != transform.parent
-        )
+        if (other.tag == "Player" || other.tag == "Breakable")
         {
-            Debug.Log(other.transform.parent == transform.parent);
             other.gameObject.GetComponent<Health>().Hit(damage);
 
             Destroy(gameObject);

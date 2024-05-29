@@ -8,4 +8,5 @@ public class BoatSpawnSettings : ScriptableObject
     public float xOffset;
     public float yOffset;
     public float speed;
+    public Vector2 playerDropOffOffset;
 }

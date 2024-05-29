@@ -14,6 +14,9 @@ public class WeaponBehavior : MonoBehaviour
 
     private void Start()
     {
+        Debug.Log("Start: weaponData: " + (weaponData != null ? weaponData.ToString() : "null"));
+
+
         ammo = weaponData.ammo;
         lastShotTime = Time.time;
     }
@@ -35,6 +38,7 @@ public class WeaponBehavior : MonoBehaviour
 
             GameObject bullet = Instantiate(weaponData.bullet, transform.position, transform.rotation, transform.parent.parent);
             bullet.GetComponent<DamageEntity>().damage = weaponData.damage * damageMult;
+            bullet.GetComponent<DamageEntity>().parent = transform.parent.gameObject;
             Vector3 forwardDirection = transform.right;
             bullet.GetComponent<Rigidbody2D>().velocity = forwardDirection * weaponData.bulletSpeed;
 

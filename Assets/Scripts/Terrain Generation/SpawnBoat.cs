@@ -50,6 +50,7 @@ public class SpawnBoat : MonoBehaviour
         previousBoatPos = spawnedBoat.transform.position;
 
         spawnedPlayer = Instantiate(player, boatSpawnPos, Quaternion.identity);
+        spawnedPlayer.GetComponent<CircleCollider2D>().enabled = false;
         GameObject.Find("Main Camera").GetComponent<CameraMovement>().trans = spawnedPlayer.transform;
     }
 
@@ -69,6 +70,8 @@ public class SpawnBoat : MonoBehaviour
         if (holdPlayer && Vector2.Distance(spawnedBoat.transform.position, previousBoatPos) == 0)
         {
             holdPlayer = false;
+            spawnedPlayer.transform.position = spawnedPlayer.transform.position + (Vector3)bSettings.playerDropOffOffset;
+            spawnedPlayer.GetComponent<CircleCollider2D>().enabled = true;
         }
 
         if (holdPlayer)
