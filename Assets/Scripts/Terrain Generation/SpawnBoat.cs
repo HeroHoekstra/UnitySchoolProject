@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using UnityEngine.UI;
 
 public class SpawnBoat : MonoBehaviour
 {
@@ -51,7 +52,11 @@ public class SpawnBoat : MonoBehaviour
 
         spawnedPlayer = Instantiate(player, boatSpawnPos, Quaternion.identity);
         spawnedPlayer.GetComponent<CircleCollider2D>().enabled = false;
-        GameObject.Find("Main Camera").GetComponent<CameraMovement>().trans = spawnedPlayer.transform;
+
+        // Do camera work
+        GameObject cam = GameObject.Find("Main Camera");
+        cam.GetComponent<CameraMovement>().trans = spawnedPlayer.transform;
+        gameObject.GetComponent<Fading>().FadeToTransparent(0.75f);
     }
 
     private void Update()

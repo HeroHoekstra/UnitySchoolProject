@@ -5,14 +5,15 @@ using UnityEngine;
 public class WeaponMovement : MonoBehaviour
 {
     public PlayerData playerData;
+    public GameObject weapon;
 
-    private GameObject weapon;
-    private WeaponBehavior wb = new WeaponBehavior();
-
+    private WeaponBehavior wb;
 
     private void Start()
     {
-        weapon = transform.Find("Weapon").gameObject;
+        weapon = Instantiate(weapon, transform.position + new Vector3(0, 0, -1), Quaternion.identity, transform);
+        wb = weapon.GetComponent<WeaponBehavior>();
+        wb.parent = gameObject;
     }
 
     void Update()

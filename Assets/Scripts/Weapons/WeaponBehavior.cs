@@ -3,6 +3,7 @@ using UnityEngine;
 public class WeaponBehavior : MonoBehaviour
 {
     public WeaponData weaponData;
+    public GameObject parent;
 
     [HideInInspector]
     public bool reloading;
@@ -12,14 +13,14 @@ public class WeaponBehavior : MonoBehaviour
     private int ammo;
     private float lastShotTime;
 
-    private void Start()
+    public void Start()
     {
-        Debug.Log("Start: weaponData: " + (weaponData != null ? weaponData.ToString() : "null"));
-
-
         ammo = weaponData.ammo;
+
         lastShotTime = Time.time;
     }
+
+
 
     public void Shoot(float damageMult)
     {
@@ -37,8 +38,10 @@ public class WeaponBehavior : MonoBehaviour
             }
 
             GameObject bullet = Instantiate(weaponData.bullet, transform.position, transform.rotation, transform.parent.parent);
-            bullet.GetComponent<DamageEntity>().damage = weaponData.damage * damageMult;
-            bullet.GetComponent<DamageEntity>().parent = transform.parent.gameObject;
+            DamageEntity de = bullet.GetComponent<DamageEntity>();
+            
+            de.damage = weaponData.damage * damageMult;
+            de.parent = parent;
             Vector3 forwardDirection = transform.right;
             bullet.GetComponent<Rigidbody2D>().velocity = forwardDirection * weaponData.bulletSpeed;
 

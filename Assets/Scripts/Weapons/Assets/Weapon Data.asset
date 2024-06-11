@@ -18,3 +18,4 @@ MonoBehaviour:
   bulletSpeed: 5
   shootSpeed: 1
   reloadTime: 5
+  playerBuff: 0.5

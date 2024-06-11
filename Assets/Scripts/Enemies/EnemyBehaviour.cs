@@ -31,6 +31,7 @@ public class EnemyBehaviour : MonoBehaviour
         // Give them their weapon
         weapon = Instantiate(enemyData.weapon, transform.position, Quaternion.identity, transform);
         weaponBehavior = weapon.GetComponent<WeaponBehavior>();
+        weaponBehavior.parent = gameObject;
 
         // Set detection radius
         CircleCollider2D sightDist = gameObject.AddComponent<CircleCollider2D>();

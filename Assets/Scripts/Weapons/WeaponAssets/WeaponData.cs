@@ -11,4 +11,6 @@ public class WeaponData : ScriptableObject
 
     public float shootSpeed;
     public float reloadTime;
+
+    public float playerBuff;
 }
