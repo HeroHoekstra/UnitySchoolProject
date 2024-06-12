@@ -24,12 +24,13 @@ public class SpawnBoat : MonoBehaviour
     TerrainRegions.TerrainRegion lowestRegion;
     private Vector2 boatSpawnPos;
 
+    private Fading fading;
+
     // Variables for finding island size
     private int currentSize = 0;
     private bool[,] visited;
     private int width;
     private int height;
-
 
     private void Start()
     {
@@ -56,7 +57,8 @@ public class SpawnBoat : MonoBehaviour
         // Do camera work
         GameObject cam = GameObject.Find("Main Camera");
         cam.GetComponent<CameraMovement>().trans = spawnedPlayer.transform;
-        gameObject.GetComponent<Fading>().FadeToTransparent(0.75f);
+
+        StartCoroutine(fadeImage());
     }
 
     private void Update()
@@ -165,5 +167,15 @@ public class SpawnBoat : MonoBehaviour
         CheckNeighbors(x, y + 1);
         CheckNeighbors(x - 1, y);
         CheckNeighbors(x, y - 1);
+    }
+
+    private IEnumerator fadeImage()
+    {
+        fading = GetComponent<Fading>();
+        fading.fadeImage.gameObject.SetActive(true);
+
+        yield return fading.FadeToTransparent(0.80f);
+
+        fading.fadeImage.gameObject.SetActive(false);
     }
 }

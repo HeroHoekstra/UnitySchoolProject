@@ -21,7 +21,6 @@ public class DamageEntity : MonoBehaviour
         )
         {
             other.gameObject.GetComponent<Health>().Hit(damage);
-            Destroy( other.gameObject );
 
             Destroy(gameObject);
         }

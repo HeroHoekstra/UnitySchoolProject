@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 785cbe98a99d1fe49983a38c6f2c8513, type: 3}
   m_Name: Terrain Settings
   m_EditorClassIdentifier: 
-  mapWidth: 100
-  mapHeight: 100
+  mapWidth: 75
+  mapHeight: 75
   noiseMapScale: 20
-  falloffDistance: 0
+  falloffDistance: 30
   setRandomSeed: 1
   seed: {x: 0, y: 0}

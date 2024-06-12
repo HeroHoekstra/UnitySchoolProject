@@ -22,14 +22,14 @@ public class Fading : MonoBehaviour
         }
     }
 
-    public void FadeToBlack(float fadeOffset)
+    public IEnumerator FadeToBlack(float fadeOffset)
     {
-        StartCoroutine(FadeImage(fadeImage, fadeImage.color.a, 1f, fadeOffset));
+        yield return StartCoroutine(FadeImage(fadeImage, fadeImage.color.a, 1f, fadeOffset));
     }
 
-    public void FadeToTransparent(float fadeOffset)
+    public IEnumerator FadeToTransparent(float fadeOffset)
     {
-        StartCoroutine(FadeImage(fadeImage, fadeImage.color.a, 0f, fadeOffset));
+        yield return StartCoroutine(FadeImage(fadeImage, fadeImage.color.a, 0f, fadeOffset));
     }
 
     private IEnumerator FadeImage(Image img, float startAlpha, float endAlpha, float fadeOffset)

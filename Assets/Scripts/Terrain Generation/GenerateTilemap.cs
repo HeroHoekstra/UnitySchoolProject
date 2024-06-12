@@ -5,6 +5,7 @@ using UnityEngine.Tilemaps;
 
 public class GenerateTilemap : MonoBehaviour
 {
+    [HideInInspector]
     public TerrainSettings settings;
     public TerrainRegions regions;
 
@@ -14,8 +15,10 @@ public class GenerateTilemap : MonoBehaviour
     [HideInInspector]
     public float[,] noiseMap;
 
-    private void Awake()
+    public void Start()
     {
+        settings = GameObject.Find("MainManager").GetComponent<GameManager>().tSettings;
+
         noiseMap = generateNoiseMap(settings.mapWidth, settings.mapHeight, settings.noiseMapScale, getSeed(settings.seed));
 
         getTileMap(noiseMap);

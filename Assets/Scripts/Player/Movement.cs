@@ -4,7 +4,15 @@ using UnityEngine;
 
 public class Movement : MonoBehaviour
 {
+    private PlayerData playerData;
     public float moveSpeed;
+
+    private void Start()
+    {
+        playerData = GameObject.Find("MainManager").GetComponent<GameManager>().playerData;
+
+        moveSpeed = playerData.speed;
+    }
 
     private void FixedUpdate()
     {

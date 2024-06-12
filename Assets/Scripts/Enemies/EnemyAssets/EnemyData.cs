@@ -21,6 +21,9 @@ public class EnemyData : ScriptableObject
     public float moveRange;
     public Behaviors behaviors;
 
+    [Header("Other")]
+    public int score;
+
     public enum Behaviors
     {
         NONE,

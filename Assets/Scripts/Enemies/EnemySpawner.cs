@@ -5,13 +5,15 @@ using UnityEngine.Tilemaps;
 
 public class SpawnEnemies : MonoBehaviour
 {
-    public EnemySpawnSettings ess;
+    private EnemySpawnSettings ess;
     public Transform enemyParent;
 
     private Transform land;
 
     private void Start()
     {
+        ess = GameObject.Find("MainManager").GetComponent<GameManager>().esSetting;
+
         land = transform.Find("Walkable");
 
         if (land != null)

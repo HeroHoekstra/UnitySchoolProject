@@ -4,13 +4,15 @@ using UnityEngine;
 
 public class WeaponMovement : MonoBehaviour
 {
-    public PlayerData playerData;
+    private PlayerData playerData;
     public GameObject weapon;
 
     private WeaponBehavior wb;
 
     private void Start()
     {
+        playerData = GameObject.Find("MainManager").GetComponent<GameManager>().playerData;
+
         weapon = Instantiate(weapon, transform.position + new Vector3(0, 0, -1), Quaternion.identity, transform);
         wb = weapon.GetComponent<WeaponBehavior>();
         wb.parent = gameObject;

@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 143458759267120074}
   - component: {fileID: 2376352514139718388}
   - component: {fileID: 477758903496630924}
+  - component: {fileID: 2636810232075326107}
   m_Layer: 0
   m_Name: Boat
   m_TagString: Untagged
@@ -92,6 +93,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1cf9c8e017a4bf0429c2a9bdf1a89b22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ts: {fileID: 11400000, guid: a68750f1bb601a24e912a76bf055206b, type: 2}
+  bSettings: {fileID: 11400000, guid: 58a103303e4149c45967085bf7b95673, type: 2}
+  acceleration: 0.5
 --- !u!114 &477758903496630924
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -104,6 +108,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ceb83ac11be53a641b4af25b82de9efb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2636810232075326107
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3076553908165670769}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 12cae9f866b3fc641b2b7aaa4d6e25c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fadeImage: {fileID: 0}
+  fadeDuration: 0.5
 --- !u!1 &3103032285664583604
 GameObject:
   m_ObjectHideFlags: 0

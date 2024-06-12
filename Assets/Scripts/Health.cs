@@ -5,7 +5,8 @@ using UnityEngine;
 public class Health : MonoBehaviour
 {
     public EnemyData enemyData;
-    public PlayerData playerData;
+    private PlayerData playerData;
+    private HealthUI healthUI;
 
     private float maxHealth = -1;
     private float defense = -1;
@@ -24,8 +25,12 @@ public class Health : MonoBehaviour
 
     private void Start()
     {
+        playerData = GameObject.Find("MainManager").GetComponent<GameManager>().playerData;
+
         if (playerData != null)
         {
+            healthUI = GameObject.Find("CurrentHealth").GetComponent<HealthUI>();
+
             maxHealth = playerData.maxHealth;
             defense = playerData.defense;
 
@@ -62,11 +67,18 @@ public class Health : MonoBehaviour
             {
                 if (ot == ObjectType.Enemy || ot == ObjectType.Breakable)
                 {
+                    GameObject.Find("MainManager").GetComponent<GameManager>().score += enemyData.score;
                     Destroy(gameObject);
                 }
                 else
                 {
-                    Debug.Log("Oof! auwie! u die :(");
+                    // TODO: fix this
+                    Debug.Log("hit player");
+                    if (healthUI != null)
+                    {
+                        Debug.Log("Processing hit");
+                        healthUI.UpdateBar(playerData.maxHealth, health);
+                    }
                 }
             }
         }

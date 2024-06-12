@@ -1,5 +1,7 @@
+-- DONE --
 1. Make it so that the scene is loaded properly. This also has the benefit of being able to easily make it so that you can go to a different level
 
+-- DONE -- (ish)
 2. Add How to play instructions
 
 3. Properly fix damage, weapons and enemy firing

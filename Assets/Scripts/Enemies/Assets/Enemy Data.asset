@@ -22,3 +22,4 @@ MonoBehaviour:
   keepDistance: 5
   moveRange: 2
   behaviors: 2
+  score: 20
