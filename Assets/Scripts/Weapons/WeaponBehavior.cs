@@ -1,49 +1,61 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class WeaponBehavior : MonoBehaviour
 {
-    public WeaponData weaponData;
-    public GameObject parent;
+    public WeaponData wData;
 
     [HideInInspector]
-    public bool reloading;
-    [HideInInspector]
     public bool shot;
+    [HideInInspector]
+    public bool reloading;
+
+    public GameObject parent;
 
     private int ammo;
     private float lastShotTime;
 
     public void Start()
     {
-        ammo = weaponData.ammo;
-
+        ammo = wData.ammo;
         lastShotTime = Time.time;
     }
 
-
-
-    public void Shoot(float damageMult)
+    public void Shoot(float damangeMult)
     {
         if (
-            (Time.time - lastShotTime >= weaponData.shootSpeed && ammo > 0) ||
-            (Time.time - lastShotTime >= weaponData.reloadTime)
-        ) {
+            (Time.time - lastShotTime >= wData.shootSpeed && ammo > 0) ||
+            (Time.time - lastShotTime >= wData.reloadTime)
+        )
+        {
             reloading = false;
             shot = true;
 
             if (ammo <= 0)
             {
-                ammo = weaponData.ammo;
+                ammo = wData.ammo;
                 reloading = true;
             }
 
-            GameObject bullet = Instantiate(weaponData.bullet, transform.position, transform.rotation, transform.parent.parent);
-            DamageEntity de = bullet.GetComponent<DamageEntity>();
-            
-            de.damage = weaponData.damage * damageMult;
-            de.parent = parent;
+            GameObject bullet = Instantiate(wData.bullet, transform.position, Quaternion.identity);
             Vector3 forwardDirection = transform.right;
-            bullet.GetComponent<Rigidbody2D>().velocity = forwardDirection * weaponData.bulletSpeed;
+
+            Rigidbody2D bRb = bullet.GetComponent<Rigidbody2D>();
+            LayerMask thisLayer = 1 << gameObject.layer;
+            LayerMask thatLayer = LayerMask.GetMask("Ignore Raycast");
+            LayerMask otherLayer = LayerMask.GetMask("Player") == 1 << gameObject.layer ? LayerMask.GetMask("Enemy") : LayerMask.GetMask("Player");
+            bRb.velocity = forwardDirection * wData.bulletSpeed;
+            bRb.excludeLayers |= thisLayer;
+            bRb.excludeLayers |= thatLayer;
+            bRb.includeLayers |= otherLayer;
+
+            CircleCollider2D coll = bullet.GetComponent<CircleCollider2D>();
+            coll.excludeLayers |= thisLayer;
+            coll.excludeLayers |= thatLayer;
+            coll.includeLayers |= otherLayer;
+
+            bullet.GetComponent<BulletBehaviour>().damageMult = damangeMult;
 
             ammo--;
             lastShotTime = Time.time;

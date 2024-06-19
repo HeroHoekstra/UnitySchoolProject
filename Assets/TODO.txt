@@ -4,8 +4,11 @@
 -- DONE -- (ish)
 2. Add How to play instructions
 
+-- DONE --
 3. Properly fix damage, weapons and enemy firing
 
+-- 4 DONE --
 4. Handle death (unload scene, show score, return to menu)
+4a Add score / highscore tab
 
 5. Extra pickups / enemies

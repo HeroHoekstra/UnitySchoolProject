@@ -43,6 +43,21 @@ public class Menu : MonoBehaviour
 
         StartCoroutine(fading.FadeToTransparent(0));
         fadeImage.gameObject.SetActive(false);
+
+        bool found = false;
+        foreach (GameObject gM in GameObject.FindGameObjectsWithTag("EditorOnly"))
+        {
+            if (gM.name == "MainManager")
+            {
+                if (!found)
+                {   
+                    found = true;
+                    continue;
+                }
+
+                Destroy(gM);
+            }
+        }
     }
 
     private IEnumerator StartGameCoroutine(float seconds)

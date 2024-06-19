@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5939825415226120724}
   - component: {fileID: 2644767151711757811}
   - component: {fileID: 5845832081219712242}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -125,7 +125,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyData: {fileID: 0}
-  playerData: {fileID: 11400000, guid: 6e0cafae4aace14479967a266cca0d0b, type: 2}
 --- !u!114 &5845832081219712242
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -138,8 +137,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbebade1e1635704684d89e1de765de1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerData: {fileID: 11400000, guid: 6e0cafae4aace14479967a266cca0d0b, type: 2}
-  weapon: {fileID: 2934078796072976637, guid: c9e6c4510749cf349903a9a6d32b5f11, type: 3}
+  weapon: {fileID: 3978873826971153042, guid: bde462bb6b8f7ab4eb764841a0eb4e9c, type: 3}
 --- !u!1 &7687016452706847701
 GameObject:
   m_ObjectHideFlags: 0
@@ -150,7 +148,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6313722466995608252}
   - component: {fileID: 6026287791183476499}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}

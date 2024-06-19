@@ -36,6 +36,6 @@ public class ScoreUI : MonoBehaviour
             scoreText.text = "Score: " + score;
         }
 
-        gameManager.score = score;
+        score = gameManager.score;
     }
 }

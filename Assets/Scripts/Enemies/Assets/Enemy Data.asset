@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: Enemy Data
   m_EditorClassIdentifier: 
   detectionRadius: 10
-  maxHealth: 10
+  maxHealth: 2
   defense: 1
   shootDistance: 10
   damageMultiplier: 1
-  weapon: {fileID: 2934078796072976637, guid: c9e6c4510749cf349903a9a6d32b5f11, type: 3}
+  weapon: {fileID: 3978873826971153042, guid: bde462bb6b8f7ab4eb764841a0eb4e9c, type: 3}
   speed: 3
   keepDistance: 5
   moveRange: 2

@@ -10,7 +10,8 @@ public class EnemyBehaviour : MonoBehaviour
 {
     public EnemyData enemyData;
 
-    private Transform player;
+    [HideInInspector]
+    public Transform player;
     private GameObject target;
     private bool range;
 
@@ -34,7 +35,7 @@ public class EnemyBehaviour : MonoBehaviour
         weaponBehavior.parent = gameObject;
 
         // Set detection radius
-        CircleCollider2D sightDist = gameObject.AddComponent<CircleCollider2D>();
+        CircleCollider2D sightDist = transform.parent.gameObject.AddComponent<CircleCollider2D>();
         sightDist.radius = enemyData.detectionRadius;
         sightDist.isTrigger = true;
 
@@ -106,14 +107,6 @@ public class EnemyBehaviour : MonoBehaviour
             weapon.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
 
             weaponBehavior.Shoot(enemyData.damageMultiplier);
-        }
-    }
-
-    public void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.tag == "Player")
-        {
-            player = other.transform;
         }
     }
 }

@@ -18,6 +18,7 @@ public class GameManager : MonoBehaviour
 
     [Header("Other")]
     public PlayerData playerData;
+    public KeepData keepData;
     public int score = 0;
 
     [Header("Defaults")]
@@ -51,5 +52,17 @@ public class GameManager : MonoBehaviour
         esSetting.difficullty += difficultyIncrease;
         esSetting.spawnAmount += spawnIncrease;
         esSetting.dynamicEnemyMulitplier += difficultyIncrease;
+    }
+
+    public void ResetData()
+    {
+        keepData.UpdateHighScore(score);
+
+        tSettings = dTSettings;
+        esSetting = dEsSettings;
+        playerData = dPlayerData;
+
+        score = 0;
+        level = 0;
     }
 }

@@ -14,6 +14,8 @@ public class WeaponMovement : MonoBehaviour
         playerData = GameObject.Find("MainManager").GetComponent<GameManager>().playerData;
 
         weapon = Instantiate(weapon, transform.position + new Vector3(0, 0, -1), Quaternion.identity, transform);
+        int layerMask = LayerMask.NameToLayer("Player");
+        weapon.layer = layerMask;
         wb = weapon.GetComponent<WeaponBehavior>();
         wb.parent = gameObject;
     }

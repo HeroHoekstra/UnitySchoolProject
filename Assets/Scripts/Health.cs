@@ -1,12 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Health : MonoBehaviour
 {
-    public EnemyData enemyData;
+    private GameManager gameManager; 
     private PlayerData playerData;
     private HealthUI healthUI;
+
+    public EnemyData enemyData;
+    private EnemyBehaviour enemyBehaviour;
 
     private float maxHealth = -1;
     private float defense = -1;
@@ -18,37 +22,33 @@ public class Health : MonoBehaviour
     private enum ObjectType
     {
         Enemy,
-        Player,
-        Breakable,
-        Other
+        Player
     }
 
     private void Start()
     {
-        playerData = GameObject.Find("MainManager").GetComponent<GameManager>().playerData;
-
-        if (playerData != null)
+        if (enemyData != null)
         {
-            healthUI = GameObject.Find("CurrentHealth").GetComponent<HealthUI>();
+            maxHealth = enemyData.maxHealth;
+            defense = enemyData.defense;
+
+            enemyBehaviour = GetComponent<EnemyBehaviour>();
+
+            ot = ObjectType.Enemy;
+        } 
+        else
+        {
+            playerData = GameObject.Find("MainManager").GetComponent<GameManager>().playerData;
+            healthUI = GameObject.Find("Health").GetComponent<HealthUI>();
+            gameManager = GameObject.Find("MainManager").GetComponent<GameManager>();
 
             maxHealth = playerData.maxHealth;
             defense = playerData.defense;
 
             ot = ObjectType.Player;
         }
-        else if (enemyData != null)
-        {
-            maxHealth = enemyData.maxHealth;
-            defense = enemyData.defense;
 
-            ot = ObjectType.Enemy;
-        }
-        else
-        {
-            ot = ObjectType.Other;
-        }
-
-        if (defense == -1 || maxHealth == -1 && ot != ObjectType.Other)
+        if (defense == -1 || maxHealth == -1)
         {
             Debug.LogError("Could not find objects health data");
             return;
@@ -59,27 +59,30 @@ public class Health : MonoBehaviour
 
     public void Hit(float damage)
     {
-        if (ot != ObjectType.Other)
-        {
-            health -= damage / defense;
+        health -= damage / defense;
 
-            if (health < 0)
+        if (ot == ObjectType.Player)
+        {
+            healthUI.UpdateBar(maxHealth, health);
+        } 
+        else
+        {
+            if (enemyBehaviour.player == null)
             {
-                if (ot == ObjectType.Enemy || ot == ObjectType.Breakable)
-                {
-                    GameObject.Find("MainManager").GetComponent<GameManager>().score += enemyData.score;
-                    Destroy(gameObject);
-                }
-                else
-                {
-                    // TODO: fix this
-                    Debug.Log("hit player");
-                    if (healthUI != null)
-                    {
-                        Debug.Log("Processing hit");
-                        healthUI.UpdateBar(playerData.maxHealth, health);
-                    }
-                }
+                enemyBehaviour.player = GameObject.Find("Player(Clone)").transform;
+            }
+        }
+
+        if (health < 0)
+        {
+            if (ot == ObjectType.Enemy)
+            {
+                GameObject.Find("MainManager").GetComponent<GameManager>().score += enemyData.score;
+                Destroy(gameObject);
+            } 
+            else if (ot == ObjectType.Player)
+            {
+                SceneManager.LoadScene("Menu");
             }
         }
     }

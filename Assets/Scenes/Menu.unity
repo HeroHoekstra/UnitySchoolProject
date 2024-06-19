@@ -1574,7 +1574,7 @@ GameObject:
   - component: {fileID: 1758622440}
   m_Layer: 0
   m_Name: MainManager
-  m_TagString: Untagged
+  m_TagString: EditorOnly
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1598,6 +1598,7 @@ MonoBehaviour:
   spawnIncrease: 1
   spawnMultiplierIncrease: 1.1
   playerData: {fileID: 11400000, guid: 6e0cafae4aace14479967a266cca0d0b, type: 2}
+  keepData: {fileID: 11400000, guid: 0c4cdc13ad428fa488690e451a670c2a, type: 2}
   score: 0
   dTSettings: {fileID: 11400000, guid: 07b3dfe0a72e71740887ace2710c6e32, type: 2}
   dEsSettings: {fileID: 11400000, guid: de9b45c17648480489cc18652d3e4e89, type: 2}
