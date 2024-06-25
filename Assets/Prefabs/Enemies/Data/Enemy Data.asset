@@ -17,6 +17,7 @@ MonoBehaviour:
   defense: 1
   shootDistance: 10
   damageMultiplier: 1
+  dropChance: 100
   weapon: {fileID: 3978873826971153042, guid: bde462bb6b8f7ab4eb764841a0eb4e9c, type: 3}
   speed: 3
   keepDistance: 5

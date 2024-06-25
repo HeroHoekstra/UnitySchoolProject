@@ -19,6 +19,7 @@ public class GameManager : MonoBehaviour
     [Header("Other")]
     public PlayerData playerData;
     public KeepData keepData;
+    public int oldScore;
     public int score = 0;
 
     [Header("Defaults")]
@@ -30,13 +31,11 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
+        // Make this permanent and remove previous session data
         Instance = this;
-        
         DontDestroyOnLoad(gameObject);
 
-        tSettings = dTSettings;
-        esSetting = dEsSettings;
-        playerData = dPlayerData;
+        ResetData();
     }
 
     public void NextLevelData()
@@ -56,11 +55,12 @@ public class GameManager : MonoBehaviour
 
     public void ResetData()
     {
+        oldScore = score;
         keepData.UpdateHighScore(score);
 
-        tSettings = dTSettings;
-        esSetting = dEsSettings;
-        playerData = dPlayerData;
+        tSettings = Instantiate(dTSettings);
+        esSetting = Instantiate(dEsSettings);
+        playerData = Instantiate(dPlayerData);
 
         score = 0;
         level = 0;

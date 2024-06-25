@@ -9,10 +9,18 @@ public class Menu : MonoBehaviour
     public GameObject mainMenu;
     public GameObject howToMenu;
 
+    public Image fadeImage;
+    private Fading fading;
+
+    // Button functions
     public void ShowMainMenu()
     {
         howToMenu.SetActive(false);
         mainMenu.SetActive(true);
+    }
+    public void LoadMainMenu()
+    {
+        SceneManager.LoadScene("Menu");
     }
 
     public void ShowHowTo()
@@ -25,9 +33,6 @@ public class Menu : MonoBehaviour
     {
         Application.Quit();
     }
-
-    public Image fadeImage;
-    private Fading fading;
 
     public void StartGame()
     {
@@ -44,6 +49,8 @@ public class Menu : MonoBehaviour
         StartCoroutine(fading.FadeToTransparent(0));
         fadeImage.gameObject.SetActive(false);
 
+        // Sometimes the GameManeger is multiplied.
+        // This removes all extra GameManagers
         bool found = false;
         foreach (GameObject gM in GameObject.FindGameObjectsWithTag("EditorOnly"))
         {
@@ -60,6 +67,7 @@ public class Menu : MonoBehaviour
         }
     }
 
+    // This handles starting the game and fading the black image
     private IEnumerator StartGameCoroutine(float seconds)
     {
         fadeImage.gameObject.SetActive(true);

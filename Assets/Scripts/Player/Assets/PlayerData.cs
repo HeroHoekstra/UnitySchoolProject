@@ -12,4 +12,6 @@ public class PlayerData : ScriptableObject
     public float speed;
 
     public float damageMultiplier;
+
+    public GameObject weapon;
 }

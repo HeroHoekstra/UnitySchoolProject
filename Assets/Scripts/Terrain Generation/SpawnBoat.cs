@@ -7,6 +7,7 @@ using UnityEngine.UI;
 
 public class SpawnBoat : MonoBehaviour
 {
+    // Whole bunch of variables
     public GameObject boat;
     public GameObject player;
     public BoatSpawnSettings bSettings;
@@ -36,6 +37,7 @@ public class SpawnBoat : MonoBehaviour
     {
         gtm = GetComponent<GenerateTilemap>();
 
+        // Sets terrain variables
         noiseMap = gtm.noiseMap;
         lowestRegion = gtm.regions.terrainRegion
             .Where(s => s.isWalkable)
@@ -46,8 +48,8 @@ public class SpawnBoat : MonoBehaviour
         height = gtm.noiseMap.GetLength(1);
         visited = new bool[width, height];
 
+        // Spawn boat and player
         boatSpawnPos = GetBoatSpawn() + new Vector2(bSettings.xOffset, bSettings.yOffset);
-
         spawnedBoat = Instantiate(boat, new Vector3(-10, boatSpawnPos.y, -0.3f), Quaternion.identity);
         previousBoatPos = spawnedBoat.transform.position;
 
@@ -106,6 +108,7 @@ public class SpawnBoat : MonoBehaviour
         int firstX = 0;
         int lastX = 0;
 
+        // Moves through all coords and keeps the lowest island tile (if the island is bigger than minSize)
         for (int y = 0; y < height; y++)
         {
             for (int x = 0; x < width; x++)

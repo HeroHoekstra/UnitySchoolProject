@@ -12,12 +12,14 @@ public class SpawnEnemies : MonoBehaviour
 
     private void Start()
     {
+        // Gets data
         ess = GameObject.Find("MainManager").GetComponent<GameManager>().esSetting;
-
         land = transform.Find("Walkable");
 
+        // Check for land
         if (land != null)
         {
+            // If dynamic enemy amount is checked, get the appropriate amount
             int enemyAmount;
             if (ess.useDynamicSpawnAmount)
             {
@@ -48,6 +50,7 @@ public class SpawnEnemies : MonoBehaviour
                     eligibleEnemies = ess.enemyTypes;
                 }
 
+                // Spawn the right enemies
                 float totalRarity = 0;
                 foreach (var enemy in eligibleEnemies)
                 {
@@ -70,7 +73,7 @@ public class SpawnEnemies : MonoBehaviour
         } 
         else
         {
-            Debug.LogError("Can't find the land area (bowomp) did you change the name of the \"Walkable\" tilemap?");
+            Debug.LogError("Can't find the land area did you change the name of the \"Walkable\" tilemap?");
         }
     }
 }

@@ -4,13 +4,15 @@ using UnityEngine;
 
 public class DetectPlayer : MonoBehaviour
 {
-    GameObject go;
-    EnemyBehaviour eb;
+    // This is a really basic player detection script
+    // The only reason this is a sepperate script is because of how the enemy works
+
+    public GameObject enemy;
+    private EnemyBehaviour eb;
 
     private void Start()
     {
-        go = transform.Find("Enemy").gameObject;
-        eb = go.GetComponent<EnemyBehaviour>();
+        eb = enemy.GetComponent<EnemyBehaviour>();
     }
 
     private void OnTriggerEnter2D(Collider2D other)

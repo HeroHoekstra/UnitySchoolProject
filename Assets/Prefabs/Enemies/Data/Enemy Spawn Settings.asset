@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48b93b2d90feb9a4f8328dd05e340ddd, type: 3}
   m_Name: Enemy Spawn Settings
   m_EditorClassIdentifier: 
-  spawnAmount: 2
-  difficullty: 10
+  spawnAmount: 1
+  difficullty: 1
   enemyDifficultyMargin: 10
-  useDynamicSpawnAmount: 0
+  useDynamicSpawnAmount: 1
   dynamicEnemyMulitplier: 1
   enemyTypes:
   - enemy: {fileID: 4475311452324477284, guid: 92ab594e9c2725d49910757439a5a3aa, type: 3}

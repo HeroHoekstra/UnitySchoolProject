@@ -19,6 +19,7 @@ public class HealthUI : MonoBehaviour
         }
     }
 
+    // Update the health bar when called (duh)
     public void UpdateBar(float maxHealth, float health)
     {
         if (healthTrans != null)

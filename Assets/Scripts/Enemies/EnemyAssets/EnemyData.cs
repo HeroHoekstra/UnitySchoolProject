@@ -13,6 +13,8 @@ public class EnemyData : ScriptableObject
     [Header("Weapon data")]
     public float shootDistance;
     public float damageMultiplier;
+    [Range(0, 100)]
+    public int dropChance;
     public GameObject weapon;
 
     [Header("Movement")]

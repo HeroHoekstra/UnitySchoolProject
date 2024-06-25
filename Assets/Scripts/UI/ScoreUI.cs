@@ -17,6 +17,7 @@ public class ScoreUI : MonoBehaviour
         scoreText = GetComponent<TextMeshProUGUI>();
     }
 
+    // Update the score. It's really ugly, but it works
     private void Update()
     {
         if (score < 10)

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Tilemaps;
 
 public class ExitLevel : MonoBehaviour
 {
@@ -10,7 +11,6 @@ public class ExitLevel : MonoBehaviour
 
     private GameObject player;
 
-    private ClearLevel cl;
     private Fading fading;
 
     private bool firstEnter = true;
@@ -21,14 +21,12 @@ public class ExitLevel : MonoBehaviour
 
     private void Start()
     {
-        cl = GetComponent<ClearLevel>();
         fading = GetComponent<Fading>();
-
-        cl.Init();
     }
 
     private void Update()
     {
+        // Hold the player in the boat by sticking it to the boat and disabling movement
         if (holdInBoat)
         {
             player.transform.position = gameObject.transform.position;
@@ -41,6 +39,7 @@ public class ExitLevel : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+        // Leave when the player enters the trigger again
        if (other.tag == "Player" && !firstEnter)
         {
             player = other.gameObject;
@@ -50,6 +49,7 @@ public class ExitLevel : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D other)
     {
+        // Make sure the player doesn't inmediatly leave
         if (other.tag == "Player")
         {
             firstEnter = false;
@@ -61,6 +61,7 @@ public class ExitLevel : MonoBehaviour
         holdInBoat = true;
         player.GetComponent<Movement>().enabled = false;
 
+        // Fade
         fading.fadeImage.gameObject.SetActive(true);
         yield return StartCoroutine(fading.FadeToBlack(0.5f));
 

@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8855521881999938339}
   - component: {fileID: 5064635631276074129}
+  - component: {fileID: 5813435082119203717}
   - component: {fileID: 1517798632863256472}
   - component: {fileID: 3318348093579760861}
   - component: {fileID: 4959908858508242524}
@@ -73,6 +74,33 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!50 &5813435082119203717
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 190902192626699349}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4
 --- !u!114 &1517798632863256472
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -170,6 +198,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyData: {fileID: 11400000, guid: c68055ebab9bd9249956576ae650f026, type: 2}
+  sprite: {fileID: 3264412925517243436}
+  player: {fileID: 0}
 --- !u!114 &5651276052586395319
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -260,6 +290,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf02eccbc8cfae7449f33a32d638266b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemy: {fileID: 190902192626699349}
 --- !u!1 &6349613560596660287
 GameObject:
   m_ObjectHideFlags: 0

@@ -11,10 +11,11 @@ public class Fading : MonoBehaviour
 
     private void Start()
     {
+        // If fade image is not found, it uses the default image
         if (fadeImage == null)
         {
-            Debug.LogWarning("Could not assign fade image. Trying default...");
             fadeImage = GameObject.Find("FadeImage").GetComponent<Image>();
+            // If the default image is not found, then no fading i guess...
             if (fadeImage == null ) 
             {
                 Debug.LogError("Could not assign fade image");
@@ -39,6 +40,7 @@ public class Fading : MonoBehaviour
         float elapsedTime = 0f;
         Color color = img.color;
 
+        // Make the image alpha change from one to the other
         while (elapsedTime < fadeDuration)
         {
             elapsedTime += Time.deltaTime;

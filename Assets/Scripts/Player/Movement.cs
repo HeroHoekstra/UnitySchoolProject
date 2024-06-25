@@ -16,6 +16,7 @@ public class Movement : MonoBehaviour
 
     private void FixedUpdate()
     {
+        // Worlds most basic movement script
         float movementX = Input.GetAxisRaw("Horizontal") * moveSpeed;
         float movementY = Input.GetAxisRaw("Vertical") * moveSpeed;
 

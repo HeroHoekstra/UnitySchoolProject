@@ -38,6 +38,7 @@ public class GenerateTilemap : MonoBehaviour
             {
                 for (int i = 0; i < regions.terrainRegion.Length; i++)
                 {
+                    // Set the region of this tile
                     tilePos = new Vector3Int(x, y, 0);
                     if (noiseMap[x, y] >= regions.terrainRegion[i].startHeight && noiseMap[x, y] <= regions.terrainRegion[i].endHeight)
                     {
@@ -87,6 +88,7 @@ public class GenerateTilemap : MonoBehaviour
         return noiseMap;
     }
 
+    // Gets the seed. This was made before I discovered random.seed. don't care though
     private Vector2 getSeed(Vector2 seed)
     {
         Vector2 newSeed;
