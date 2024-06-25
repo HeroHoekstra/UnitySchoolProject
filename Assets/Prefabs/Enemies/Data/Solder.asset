@@ -10,17 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 461d10b849169be41a30723200c18333, type: 3}
-  m_Name: Marksman
+  m_Name: Solder
   m_EditorClassIdentifier: 
-  detectionRadius: 18
-  maxHealth: 5
-  defense: 0.8
-  shootDistance: 15
-  damageMultiplier: 2
-  dropChance: 15
-  weapon: {fileID: 8848723922601282042, guid: dd37e1fee0a0765419319df81a39da48, type: 3}
-  speed: 4
-  keepDistance: 13
-  moveRange: 3
+  detectionRadius: 15
+  maxHealth: 7
+  defense: 1.5
+  shootDistance: 10
+  damageMultiplier: 1
+  dropChance: 7
+  weapon: {fileID: 8848723922601282042, guid: 682485e22038f0a43bf689f5ea60fd41, type: 3}
+  speed: 5
+  keepDistance: 7
+  moveRange: 2
   behaviors: 2
-  score: 15
+  score: 20

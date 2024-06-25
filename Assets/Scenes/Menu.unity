@@ -1594,11 +1594,12 @@ MonoBehaviour:
   tSettings: {fileID: 11400000, guid: a68750f1bb601a24e912a76bf055206b, type: 2}
   terrainSizeMultiplier: 1.1
   esSetting: {fileID: 11400000, guid: 43ec111a3a16694419665a2fb4d73d34, type: 2}
-  difficultyIncrease: 0.2
+  difficultyIncrease: 1
   spawnIncrease: 1
   spawnMultiplierIncrease: 1.1
   playerData: {fileID: 11400000, guid: 6e0cafae4aace14479967a266cca0d0b, type: 2}
   keepData: {fileID: 11400000, guid: 0c4cdc13ad428fa488690e451a670c2a, type: 2}
+  oldScore: 0
   score: 0
   dTSettings: {fileID: 11400000, guid: 07b3dfe0a72e71740887ace2710c6e32, type: 2}
   dEsSettings: {fileID: 11400000, guid: de9b45c17648480489cc18652d3e4e89, type: 2}

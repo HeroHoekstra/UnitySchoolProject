@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f7c2bfc2574f3214cb193a3245b076c1, type: 3}
-  m_Name: Sniper
+  m_Name: LMG
   m_EditorClassIdentifier: 
-  prefab: {fileID: 8848723922601282042, guid: dd37e1fee0a0765419319df81a39da48, type: 3}
-  ammo: 5
-  damage: 5
-  bullet: {fileID: 2051086965033525143, guid: 09253cd3f859f654ab529b607349548d, type: 3}
-  bulletSpeed: 10
-  shootSpeed: 1.5
-  reloadTime: 5
-  playerBuff: 2
+  prefab: {fileID: 8848723922601282042, guid: 7515d23d3f06f4141b5d72d68d016464, type: 3}
+  ammo: 25
+  damage: 1
+  bullet: {fileID: 2051086965033525143, guid: d738177aa06a53a4d90c99d817d7ff8d, type: 3}
+  bulletSpeed: 7
+  shootSpeed: 0.1
+  reloadTime: 10
+  playerBuff: 3

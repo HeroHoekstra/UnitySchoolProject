@@ -58,15 +58,19 @@ public class EnemyBehaviour : MonoBehaviour
     private void Update()
     {
         // Flip the sprite (without rigidbody because that doesn't work for some reason)
-        if (lastPos.x < transform.position.x)
+        float tolerance = 0.1f;
+        if (Mathf.Abs(transform.position.x - lastPos.x) > tolerance)
         {
-            sprite.flipX = true;
-        } 
-        else
-        {
-            sprite.flipX = false;
+            if (lastPos.x < transform.position.x)
+            {
+                sprite.flipX = false;
+            }
+            else
+            {
+                sprite.flipX = true;
+            }
+            lastPos = transform.position;
         }
-        lastPos = transform.position;
 
         // If the player is found
         if (player != null)

@@ -14,10 +14,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   terrainRegion:
   - isWalkable: 0
-    tileBase: {fileID: 11400000, guid: 88cfe4fa9ed607442a94ae2dc792660f, type: 2}
+    tileBase: {fileID: 11400000, guid: fe7d6f7360df0ed4da4462dbc35d67f6, type: 2}
     startHeight: 0
-    endHeight: 0.333
+    endHeight: 0.25
   - isWalkable: 1
-    tileBase: {fileID: 11400000, guid: 81b59bd37fb83f74486c67d13a57769e, type: 2}
-    startHeight: 0.333
+    tileBase: {fileID: 11400000, guid: 98356b1c951b6a944807ecf2d7b02c98, type: 2}
+    startHeight: 0.25
+    endHeight: 0.35
+  - isWalkable: 1
+    tileBase: {fileID: 11400000, guid: b4f6bba8605458e488457c7d3f49bcc7, type: 2}
+    startHeight: 0.35
+    endHeight: 0.65
+  - isWalkable: 1
+    tileBase: {fileID: 11400000, guid: a5387ad11067e114588697d6f7687b6e, type: 2}
+    startHeight: 0.65
+    endHeight: 0.7
+  - isWalkable: 1
+    tileBase: {fileID: 11400000, guid: e6a3463d92b5e074592aa89d9cea7b4c, type: 2}
+    startHeight: 0.7
     endHeight: 1

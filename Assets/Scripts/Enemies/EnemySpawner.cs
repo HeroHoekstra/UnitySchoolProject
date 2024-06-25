@@ -8,13 +8,13 @@ public class SpawnEnemies : MonoBehaviour
     private EnemySpawnSettings ess;
     public Transform enemyParent;
 
-    private Transform land;
+    private Tilemap land;
 
     private void Start()
     {
         // Gets data
         ess = GameObject.Find("MainManager").GetComponent<GameManager>().esSetting;
-        land = transform.Find("Walkable");
+        land = transform.Find("Walkable").gameObject.GetComponent<Tilemap>();
 
         // Check for land
         if (land != null)
@@ -32,7 +32,15 @@ public class SpawnEnemies : MonoBehaviour
             for (int i = 0; i < enemyAmount; i++)
             {
                 // Get random tile position
-                Vector3 randomTilePos = land.GetChild(Random.Range(0, land.childCount)).position + new Vector3(0, 0, -0.3f);
+                Vector3Int randomCell = GetRandomTilePosition(land);
+                Vector3 randomTilePos;
+                if (randomCell != null)
+                {
+                    randomTilePos = land.CellToWorld(randomCell);
+                } else
+                {
+                    return;
+                }
 
                 // Get random enemy
                 List<EnemySpawnSettings.EnemyTypes> eligibleEnemies = new List<EnemySpawnSettings.EnemyTypes>();
@@ -75,5 +83,39 @@ public class SpawnEnemies : MonoBehaviour
         {
             Debug.LogError("Can't find the land area did you change the name of the \"Walkable\" tilemap?");
         }
+    }
+
+    Vector3Int GetRandomTilePosition(Tilemap tilemap)
+    {
+        // Get the bounds of the tilemap
+        BoundsInt bounds = tilemap.cellBounds;
+        List<Vector3Int> tilePositions = new List<Vector3Int>();
+
+        // Iterate through the bounds and collect all positions with a tile
+        for (int x = bounds.xMin; x <= bounds.xMax; x++)
+        {
+            for (int y = bounds.yMin; y <= bounds.yMax; y++)
+            {
+                for (int z = bounds.zMin; z <= bounds.zMax; z++)
+                {
+                    Vector3Int localPlace = new Vector3Int(x, y, z);
+                    if (tilemap.HasTile(localPlace))
+                    {
+                        tilePositions.Add(localPlace);
+                    }
+                }
+            }
+        }
+
+        // Check if there are any tiles in the tilemap
+        if (tilePositions.Count > 0)
+        {
+            // Pick a random tile position
+            int randomIndex = Random.Range(0, tilePositions.Count);
+            return tilePositions[randomIndex];
+        }
+
+        // Return zero if no tiles are found
+        return Vector3Int.zero;
     }
 }
