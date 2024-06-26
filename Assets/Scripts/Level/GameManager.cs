@@ -6,12 +6,14 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
 
+    [HideInInspector] public TerrainSettings tSettings;
+    [HideInInspector] public EnemySpawnSettings esSetting;
+    [HideInInspector] public TerrainSettings dTSettings;
+
     [Header("Terrain Settings")]
-    public TerrainSettings tSettings;
     public float terrainSizeMultiplier;
 
     [Header("Enemy Settings")]
-    public EnemySpawnSettings esSetting;
     public float difficultyIncrease;
     public int spawnIncrease;
     public float spawnMultiplierIncrease;
@@ -23,7 +25,6 @@ public class GameManager : MonoBehaviour
     public int score = 0;
 
     [Header("Defaults")]
-    public TerrainSettings dTSettings;
     public EnemySpawnSettings dEsSettings;
     public PlayerData dPlayerData;
 

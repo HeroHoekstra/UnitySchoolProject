@@ -1,0 +1,34 @@
+Keuzedeel Game Development Overdrachtsdocument
+
+Ontwikkelstatus:
+Voltooid:
+	Er word een eiland gegenereerd. Hierop worden enemies gespawned en de player komt hier ook.
+	De er zijn 4 verschillende enemies en 4 verschillende wapens voor die enemies. 
+	Er is een kans voor de enemies om hun wapen te laten vallen nadat ze dood gaan.
+Onvoltooid:
+	Er worden geen schatten gespawned op het eiland, en de eilanden worden niet aan elkaar gekoppeld.
+	Dit kan voor frustrerende situaties veroorzaken aangezien je soms op een eiland met niks spawned.
+	Ook zijn er geen melee enemies.
+		
+
+Technische Documentatie:
+Customizing met bestaande code:
+	Ik heb mijn best gedaan om alles zo custom mogelijk te maken doormiddel van scriptable objects. 
+	Deze zouden genoeg moeten zijn om de meeste dingen te kunnen aanpassen.
+Folder structure:
+	In de asset folder zitten een aantal folders met best wel voor zelfsprekende namen 
+	(Audio heeft alle audio, prefabs heeft alle prefabs etc.)
+	
+
+Bugs En Problemen:
+	Er zijn nog wel een aantal problemen.
+		1. Als een enemy dood gaat, verwijdert het ook meteen de audio player (dus geen geluid).
+		2. De high score en score counter op de death screen doen het compleet niet.
+		3. De player draait niet om als hij de andere kant op loopt.
+		4. Er zijn verschillende soorten pathfinding behaviors, maar er werken maar 3 van de 5 (waarvan 1 none is)
+
+Welke Dingen Nog Toe Te Voegen:
+	1. Een paar bruggen tussen eilanden
+	2. Schatkist voor score en loot
+	3. Een wacht tijd tussen de player en de boot in gaan (nu is het instant)
+	4. Melee enemies/wapens

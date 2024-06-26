@@ -26,6 +26,11 @@ public class Health : MonoBehaviour
         Player
     }
 
+    // Handle sound
+    public List<AudioClip> audio;
+    public List<AudioClip> deathClip;
+    private AudioSource audioSource;
+
     private void Start()
     {
         // If enemy data is not null, this script belongs to an enemy
@@ -58,11 +63,15 @@ public class Health : MonoBehaviour
         }
 
         health = maxHealth;
+
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Handles being hit
     public void Hit(float damage)
     {
+        audioSource.Stop();
+
         // Remove from health
         health -= damage / defense;
 
@@ -83,6 +92,12 @@ public class Health : MonoBehaviour
         // Death
         if (health <= 0)
         {
+            // This won't work...
+            // This gameObject will be destroyed so playing a sound will result in nothing.
+            // I could fix this, but it's 22:30 and I have to be up at 7
+            audioSource.clip = deathClip[Random.Range(0, deathClip.Count - 1)]; ;
+            audioSource.Play();
+
             if (ot == ObjectType.Enemy)
             {
                 // Drop weapon
@@ -102,6 +117,11 @@ public class Health : MonoBehaviour
                 // Load death screen
                 SceneManager.LoadScene("Death");
             }
+        } 
+        else
+        {
+            audioSource.clip = audio[Random.Range(0, audio.Count - 1)];
+            audioSource.Play();
         }
     }
 }

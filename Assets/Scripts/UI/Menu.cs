@@ -12,6 +12,8 @@ public class Menu : MonoBehaviour
     public Image fadeImage;
     private Fading fading;
 
+    private GameManager gameManager;
+
     // Button functions
     public void ShowMainMenu()
     {
@@ -36,6 +38,7 @@ public class Menu : MonoBehaviour
 
     public void StartGame()
     {
+        gameManager.ResetData();
         StartCoroutine(StartGameCoroutine(0.5f));
     }
 
@@ -59,6 +62,7 @@ public class Menu : MonoBehaviour
                 if (!found)
                 {   
                     found = true;
+                    gameManager = gM.GetComponent<GameManager>();
                     continue;
                 }
 

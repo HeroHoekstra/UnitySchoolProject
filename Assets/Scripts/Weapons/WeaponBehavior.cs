@@ -18,6 +18,10 @@ public class WeaponBehavior : MonoBehaviour
     private int ammo;
     private float lastShotTime;
 
+    // Handle audio
+    public List<AudioClip> audio;
+    private AudioSource audioPlayer;
+
     public void Start()
     {
         ammo = wData.ammo;
@@ -28,6 +32,8 @@ public class WeaponBehavior : MonoBehaviour
         {
             GetComponent<BoxCollider2D>().enabled = true; 
         }
+
+        audioPlayer = GetComponent<AudioSource>();
     }
 
     public void Shoot(float damangeMult)
@@ -70,6 +76,12 @@ public class WeaponBehavior : MonoBehaviour
             coll.includeLayers |= otherLayer;
 
             bullet.GetComponent<BulletBehaviour>().damageMult = damangeMult;
+
+            // Play random audio clip
+            audioPlayer.Stop();
+            AudioClip clip = audio[Random.Range(0, audio.Count - 1)];
+            audioPlayer.clip = clip;
+            audioPlayer.Play();
 
             ammo--;
             lastShotTime = Time.time;

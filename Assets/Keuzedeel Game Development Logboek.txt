@@ -1,0 +1,174 @@
+Keuzedeel Game Development Logboek
+
+
+23-4-2024
+Ik ben vandaag begonnen met Unity en de game maken. 
+Als eerst heb een een deel van oude code gepakt uit een ander project voor de terrain generation, aangezien dat exact is wat ik nodig heb.
+Wel heb ik het verbeterd dus kan je nu de volgende dingen aanpassen:
+width, height, noiseScale en de falloffDistance (en natuurlijk de seed)
+Ook ben ik bezig gegaan met een super simpel movement script. (Ik heb nog wel plannen om dit te verbeteren)
+
+
+24-4-2024
+Ik heb vandaag A* geimport voor de enemies, hoewel ik nu nog even bezig ben met het maken van terrain generation is dit wel handig voor later.
+Voor de rest heb ik niks gedaan vandaag
+
+
+27-4-2024
+Ik heb vandaag de Main Camera een Lerp functie geven waarvan je de intensiteit kan aanpassen zodat de camera niet zo abrupt beweegt.
+Ook heb ik de boot spawn gefixed. De player spawned nu ook op een boot die naar de eerste de beste tile to gaat en zet daar de player af.
+De player kan alleen wel nog een beetje bewegen en soms spawn je op een heel klein eilandje
+
+
+29-4-2024
+Ik heb de player movement uitgezet wanneer je spawned en ik zet het weer aan als de boot stil staat.
+Ik ben ook gaan kijken naar een oplossing voor het kleine eiland gebeuren, maar het is iets lastiger dan gedacht.
+
+
+30-4-2024
+Ik heb een oplossing gevonden voor het zoeken vaan een groot eiland.
+Hij zoekt voor de eerste "walkable" tile, kijkt naar zijn buurman en als die nog niet is bekeken gaat de counter omhoog en doet de buurman hetzelfde.
+Dit gaat door tot dat er geen tiles meer over zijn en als de count te laag is, zoekt het verder naar een tile die nog niet bekeken is (een ander eiland)
+En ik heb deze natuurlijk ook een aantal aanpasbare variabelen gegeven. Zoals de:
+X & Y offset en de snelheid
+
+
+2-5-2024
+Ik heb vandaag de Initial commit gemaakt op GitHub.
+Ook kunnen enemies nu spawnen door een spawn script.
+Dit script heeft redelijk wat variables die er voor zorgen dat het toevoegen van enemies makkelijker worden.
+De enemies krijgen een difficulty en als de enemies in de difficulty margin zitten kunnen ze spawnen.
+Ook heeft elke enemy een rarity. De hoger de rarity, de meer common dat ze zijn (een beetje backwards maar het werkt)
+
+3-5-2024
+Ik heb vandaag gewerkt aan de enemy movement.
+Ze gaan nu achter de player aan door middel van A*. 
+A* doet eigenlijk het meest van de enemy movement, het enige wat mijn script doet is de player in een radius detecteren en dan de player als target van de A* transform zetten.
+Wat ik wel heb gedaan is het zo maken dat de enemies (Als een versie van range als behavior hebben) een afstandje van de player weg blijven. 
+Dit doe ik door een raycast van de player naar de enemy te schieten van een set distance en waar het eindigt is de nieuwe target voor de enemy.
+
+
+4-5-2024
+Ik heb vandaag de enemy kunnen laten schieten, hoewel dit nog niet helemaal lekker gaat en het niet het beste script is.
+Ook ben ik bezig geweest met verschillende soorten enemy movement, voornamelijk:
+Gewoon naar de target gaan, een offset van de target na schieten en een offset van de target na reloaden.
+Dit is niet helemaal gelukt en ik ga hier morgen mee verder.
+
+
+5-5-2024
+Ik ben verder gegaan met het fixen van de enemy movement, maar heb besloten dat het allemaal later wel goed komt.
+Voor nu heeft de enemy melee, en ranged. 
+Bij melee gaat de enemy direct naar de player, maar bij ranged houd het een afstandje (die aangepast kan worden in de enemy data)
+
+
+20-5-2024
+Ik heb het wapen nu zo aangepast de enemy ook kan schieten.
+Het doet dit door de rotatie van het wapen aan te passen om naar de player te wijzen, en dan een bullet in te spawnen.
+De bullet heeft de rotatie van het wapen en word dan naar voren gedaan door de RigidBody2D velocity aan te passen.
+De enemy probeert gewoon elke frame te schieten, maar dit word geblokkeerd door de tijd tussen schieten en reloaden.
+
+
+21-5-2024
+Ik heb extra variabelen toe gevoegd aan het wapen meer customizable te maken.
+Nu kan deze dingen aanpassen:
+Hoeveel ammo het heeft, hoeveel damage het doet, welke bullet prefab het gebruikt, de snelheid van de kogel, hoe snel je achter elkaar kan schieten, homeland het reloaden duurt en hoeveel het wapen is als de player het vast houd.
+
+
+22-5-2024
+Ik heb een health script gemaakt zodat dingen dood gaan als de health 0 is.
+Dit health script is voor zowel de player als de enemies. 
+Dit heeft er voor gezorgd dat ik een paar rare checks moet doen om te kijken of het de player of een enemy is.
+Bij nader inzien was het waarschijnlijk handiger geweest als ik deze twee apart had gemaakt, maar het is nu al gemaakt.
+het health script heeft een hit functie die er voor zorgt dat de entity damage krijgt, en je kan het nu ook maken dat als iets dood gaat dat er wat gebeurt.
+
+
+23-5-2024
+De manier waarop ik een hit detecteer heeft ervoor gezorgd dat er problemen zijn met de bullets.
+Als het word geschoten raakt het meteen iets, en om te voorkomen dat het zichzelf raakt gebruik ik een tag, maar dit werkt niet helemaal lekker soms.
+Wel heb ik de player ook aanpasbare data gegeven. Voornamelijk:
+Maxhealth, defense, speed en damageMultiplier
+
+
+28-5-2024
+Ik heb de player ook nu een wapen gegeven.
+De movement werkt bijna exact het zelfde als de enemy, maar het volgt de rotatie van de muis en schieten is met muis 0.
+Het schieten word hetzelfde gedaan als met de enemies (als in het schiet alleen als er genoeg tijd is verlopen).
+Ook heb ik meer lopen spelen met het detecteren van wat de bullet raakt.
+
+
+29-5-2024
+Ik heb het zo gemaakt dat de hitbox van de player uit staat op de boot zodat de enemies de player niet kunnen zien als hij in de boot zit.
+Ook zullen ze dan niet meteen op de player schieten.
+Voor de rest heb ik nog een paar laatste voorbereidingen gedaan voor het gesprek morgen (het schieten werkt nog steeds niet)
+
+
+[Gesprek 1]
+30-5-2024
+Ik heb vandaag het eerste feedback gesprek gehad met Jesse.
+Hier uit is gekomen dat het allenmaal goed gaat maar ik moet nog wel de volgende dingen toe voegen:
+Een doel & uitleg hoe het spel werkt.
+(Het kan zijn dat er meer uit is gekomen maar ik heb het niet toen daar opgeschreven, maar volgens mij zien dit de main points)
+
+
+10-6-2024
+Ik heb een TODO text file gemaakt voor reference voor wat ik nog allemaal moet doen.
+Daarna ben ik bezig gegaan met het maken van een menu.
+Je kan nu stoppen, kijken hoe het spel werkt en het spel starten.
+Om dit te kunnen bereiken moest ik de manier waarop het level word gemaakt aanpassen, maar het was niet al te veel werk (voornamelijk de await functie weg halen).
+
+
+11-6-2024
+Ik heb het nu zo gemaakt dat je een fade to black effect heb als je een scene laad. 
+Ook heb ik het gemaakt dat je van het eiland af kan naar het volgende eiland.
+Dit zou ik alleen willen verbeteren want je kan nu per ongeluk naar het volgende eiland zonder dat je dat wilt.
+
+
+12-6-2024
+Ik heb een GameManager toe gevoegd die alle data onthoud van de player, zodat niet alles word verloren als de volgende scene word geladen.
+Dit zorgde voor een aantal aanpassingen in het krijgen van data, maar het was niet al te veel.
+Ook ben ik bezig gegaan met het toe voegen van een score en een health bar (maar de health bar werkt nog niet (ik moet nog steeds het schieten fixen))
+
+
+[Gesprek 2]
+13-6-2024
+Ik heb het 2de feedback gesprek gehad met Jesse, en hier uit is vooral gekomen dat er meer wapens moeten worden toe gevoegd.
+Dit was ik zowieso al van plan om te doen (en omdat ik veel scriptable objects heb zou dit niet een probleem moeten worden.
+
+
+18-6-2024
+Ik ben vandaag begonnen met een complete rework van het schieten.
+Nu, inplaats van de tags te gebruiken gebruikt het script layermasks.
+Dit zorgt ervoor dat ik gewoon in de collider kan zeggen ignore deze layer en include deze, en dan werkt het.
+Er is alleen nu nog wel een raar probleem met de hitboxes van de enemy.
+
+
+19-6-2024
+Ik ben er achter gekomen wat het rare probleem was.
+Voor de player detection system, gebruik ik een CircleCollider2D op isTrigger, maar deze telde dus ook als de enemy hitbox.
+Dit zorge ervoor dat de hele detection radius ook een geldige enemy hitbox was.
+Nu heb ik het gefixed door een de hitbox op een parent component te doen en die parent niet in de layer te doen.
+Hiernaast heb ik ook nog een highScore variable gemaakt (maar die doet nu nog weinig)
+
+
+25-6-2024
+Ik heb vandaag een death menu gemaakt waar je heen gaat als je dood gaat.
+Ook heb ik de eerste (die niet is voor testen) enemy gemaakt.
+Dit is een Marksman die je van verder kan schieten dan normaal, doet meer damage, maar kan langzamer schieten.
+Ook heb ik geprobeerd om de high score variable te displayen op de death menu, maar het werkte niet en ik heb geen zin om het te fxen, dus heb ik er heel groot "Broken" op gezet in rood.
+
+
+26-6-2024
+Ik heb vandaag meer enemies toe gevoegd. met name:
+De goon: heeft een revolver, kan sneller schieten, heeft minder range en is sneller
+De soldier: kan sneller schieten, heeft meer armor en schiet van een gemiddelde range
+De tank: is langzaam, heeft meer health en kan heel snel schieten.
+Ik heb alleen de soldier en tank nog iet gezien aangezien die een hogere difficulty hebben en ik gewoon niet zo goed ben in mijn eigen spel (ik hoop dat ze werken)
+Hiernaast heb ik ook wat meer terrain regions gemaakt zodat het er niet zo monotoon uit ziet.
+
+
+27-6-2024
+Ik heb vandaag de laatste paar dingen gedaan.
+Dit houd in een audio systeem, en dingen refactoren, zodat het allenmaal wat duidelijker is.
+Het audio systeem heeft een List en die pikt er dan 1 random uit. 
+Er is wel een probleem dat als een enemy (of de player) dood gaat, de audio wel afspeelt, maar dat de component word verwijderd (dus speelt het niet af).
+Ik heb ook de Gamemanager gefixed zodat er niet 2 onnodige copieen van een Scriptable object zijn.

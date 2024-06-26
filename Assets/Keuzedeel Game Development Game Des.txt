@@ -1,0 +1,76 @@
+Keuzedeel Game Development Game Design Document
+
+
+Game Title: Super coole epische gangster game
+Theme: Pirate
+Genre: 2D Roguelike
+
+
+Overview:
+Het is een game waarbij je van eiland naar eiland gaat en enemies moord en schatten vind in een roguelike style voor replayability
+
+
+Gameplay Mechanics:
+Core Loop:
+1. Je komt bij een eiland:
+	- De player start bij een randomly generated eiland.
+	- het eiland heeft enemies en treasure om te verzamelen
+
+2. Combat:
+	- Op het eiland zijn verschillende enemies met verschillende soorten wapens die de player kan oppakken
+   	- De player word niet tegen gehouden om weg te gaan, het is alleen niet zo handig aangezien het moeilijker word
+   	- Enemies dood maken geeft meer scoren
+
+3. Treasure Hunting:
+	- Er spawned 1 X op de map waar treasure onder zit
+	- Als de player erover zit kan hij het opgraven voor meer score en een wapen
+
+4. Stat Improvement:
+	- Tijdens de run, als de player meer dan zoveel score krijgt kan er een upgrade gedaan worden
+	- Deze upgrade is niet permanent en word verwijdert aan het eind van de run
+
+De run eindigt als de player dood gaat
+
+
+Setting:
+- Op onbewoonde eilandjes, met enemies en 1 schat ergens, aan elkaar gekoppeld met een houten brug
+
+
+Enemies:
+Er zijn verschillende soorten enemies waaronder:
+	1. Een default gunner
+	2. Een sniper
+	3. Een swords man
+	4. Een tank
+
+
+Controls:
+Movement:
+- Pijltjes en WASD om te bewegen
+
+Combat:
+- Klik met de muis om te schieten of aan te vallen met een zwaard
+
+Interaction:
+- E om met dingen te interacten en spullen op te pakken
+
+
+UI:
+HUD:
+- Laat health, score en ammo zien
+
+Menus:
+- Een main menu met:
+	1. Start
+	2. Quit
+- Een death screen met:
+	1. Je score
+	2. Terug naar de main menu
+
+
+Audio:
+Sound Effects:
+	1. Schieten
+	2. Raken
+	3. Graven
+	4. Collecten 
